@@ -1,4 +1,4 @@
-function RateTable({ base, rows }) {
+function RateTable({ base, rows, isLoading = false }) {
   return (
     <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 bg-slate-50 px-6 py-4">
@@ -12,7 +12,11 @@ function RateTable({ base, rows }) {
           Base: {base.toUpperCase()}
         </div>
       </div>
-      {rows.length === 0 ? (
+      {isLoading ? (
+        <div className="px-6 py-8 text-sm text-slate-500">
+          Loading latest rates...
+        </div>
+      ) : rows.length === 0 ? (
         <div className="px-6 py-8 text-sm text-slate-500">
           Rates are loading. Try again in a moment.
         </div>

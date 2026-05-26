@@ -1,8 +1,15 @@
+import { Link, NavLink } from "react-router-dom";
+
+const navLinkClass = ({ isActive }) =>
+  `transition hover:text-slate-900 ${
+    isActive ? "text-slate-900" : "text-slate-600"
+  }`;
+
 function Header() {
   return (
     <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4">
-        <div className="flex items-center gap-3">
+        <Link className="flex items-center gap-3" to="/">
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-600 text-sm font-semibold text-white">
             FX
           </div>
@@ -12,28 +19,30 @@ function Header() {
               Currency Platform
             </p>
           </div>
-        </div>
-        <nav className="hidden items-center gap-6 text-sm text-slate-600 md:flex">
-          <a className="hover:text-slate-900" href="#converter">
+        </Link>
+        <nav className="hidden items-center gap-6 text-sm md:flex">
+          <NavLink className={navLinkClass} end to="/">
+            Overview
+          </NavLink>
+          <NavLink className={navLinkClass} to="/converter">
             Converter
-          </a>
-          <a className="hover:text-slate-900" href="#rates">
+          </NavLink>
+          <NavLink className={navLinkClass} to="/rates">
             Rates
-          </a>
-          <a className="hover:text-slate-900" href="#features">
-            Features
-          </a>
-          <a className="hover:text-slate-900" href="#faq">
-            FAQ
-          </a>
+          </NavLink>
+          <NavLink className={navLinkClass} to="/docs">
+            Docs
+          </NavLink>
         </nav>
         <div className="flex items-center gap-3">
           <button className="hidden rounded-full px-4 py-2 text-sm text-slate-600 hover:text-slate-900 sm:inline-flex">
             Log in
           </button>
-          <button className="inline-flex items-center rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700">
+          <Link
+            className="inline-flex items-center rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700"
+            to="/converter">
             Get started
-          </button>
+          </Link>
         </div>
       </div>
     </header>

@@ -6,6 +6,8 @@ import StatCard from "./StatCard";
 import FeatureCard from "./FeatureCard";
 import RateTable from "./RateTable";
 import FAQItem from "./FAQItem";
+import Layout from "./Layout";
+import ConverterCard from "./ConverterCard";
 
 export {
   InputBox,
@@ -16,4 +18,6 @@ export {
   FeatureCard,
   RateTable,
   FAQItem,
+  Layout,
+  ConverterCard,
 };
