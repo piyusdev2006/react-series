@@ -13,16 +13,17 @@ function InputBox({
 }) {
   const amountInputId = useId();
   return (
-    <div className={`bg-white p-3 rounded-lg text-sm flex ${className}`}>
-      <div className="w-1/2">
+    <div
+      className={`flex flex-col gap-4 rounded-xl border border-slate-200 bg-white p-4 text-sm sm:flex-row sm:items-center ${className}`}>
+      <div className="w-full sm:w-1/2">
         <label
           htmlFor={amountInputId}
-          className="text-black/40 mb-2 inline-block">
+          className="mb-2 inline-block text-xs font-semibold uppercase tracking-wide text-slate-500">
           {label}
         </label>
         <input
           id={amountInputId}
-          className="outline-none w-full bg-transparent py-1.5"
+          className="w-full bg-transparent py-2 text-base font-semibold text-slate-900 outline-none placeholder:text-slate-400"
           type="number"
           placeholder="Amount"
           disabled={amountDisabled}
@@ -32,10 +33,12 @@ function InputBox({
           }
         />
       </div>
-      <div className="w-1/2 flex flex-wrap justify-end text-right">
-        <p className="text-black/40 mb-2 w-full">Currency Type</p>
+      <div className="w-full sm:w-1/2 sm:text-right">
+        <p className="mb-2 w-full text-xs font-semibold uppercase tracking-wide text-slate-500">
+          Currency
+        </p>
         <select
-          className="rounded-lg px-1 py-1 bg-gray-100 cursor-pointer outline-none"
+          className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-medium text-slate-700 outline-none sm:w-auto"
           value={selectedCurrency}
           onChange={(e) => onCurrencyChange && onCurrencyChange(e.target.value)}
           disabled={currencyDisabled}>
