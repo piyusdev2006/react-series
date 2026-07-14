@@ -6,21 +6,16 @@ import { Controller } from 'react-hook-form'
 export default function RTE({name, control, label, defaultValue = ""}) {
     return (
       <div className="w-full">
-        {label && (
-          <label className="inline-block text-sm font-medium text-gray-700 mb-1 pl-1">
-            {label}
-          </label>
-        )}
+        {label && <label className="inline-block mb-1 pl-1">{label}</label>}
         <Controller
-          name={name}
+          name={name || "content"}
           control={control}
-          defaultValue={defaultValue}
           render={({ field: { onChange } }) => (
             <Editor
+              apiKey={import.meta.env.VITE_TINYMCE_API_KEY}
               initialValue={defaultValue}
               init={{
                 // initiaze hote hi kya kya value ho, jaise ki plugins, toolbar, etc.
-                initialValue: defaultValue,
                 height: 500,
                 menubar: true,
                 plugins: [
@@ -40,10 +35,10 @@ export default function RTE({name, control, label, defaultValue = ""}) {
                   "media",
                   "table",
                   "help",
-                  "wordcount"
+                  "wordcount",
                 ],
                 toolbar:
-                  "undo redo | formatselect |  bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help",
+                  "undo redo | blocks | image | bold italic forecolor | alignleft aligncenter bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |removeformat | help",
                 content_style:
                   "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
               }}
@@ -56,28 +51,3 @@ export default function RTE({name, control, label, defaultValue = ""}) {
 }
 
  
-{/* <Editor
-  initialValue="by default content"
-  init={{
-    // initiaze hote hi kya kya value ho, jaise ki plugins, toolbar, etc.
-    branding: false,
-    height: 500,
-    menubar: true,
-    plugins: [
-      "advlist",
-      "autolink",
-      "lists",
-      "link",
-      "image",
-      "charmap",
-      "preview",
-      "anchor",
-      "searchreplace",
-      "visualblocks",
-      "code",
-      "fullscreen",
-    ],
-    toolbar:
-      "undo redo | formatselect |  bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help",
-  }}
-/>; */}

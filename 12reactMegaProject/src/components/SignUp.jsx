@@ -12,16 +12,15 @@ function SignUp() {
     const [error, setError] = useState("")
     const { register, handleSubmit } = useForm()
 
-    const SignUpAccount = async (data) => {
+    const SignUpAccount = async(data) => {
         setError("")
         try {
             const user = await authService.createAccount(data)
             if (user) {
                 const loggedUser = await authService.getCurrentUser()
-                if(loggedUser) {
-                    dispatch(login(loggedUser))
-                    navigate("/")
-                }
+              if (loggedUser) dispatch(login(loggedUser))
+              
+              navigate("/")  
             }
         } catch (error) {
             setError(error.message)
@@ -82,7 +81,8 @@ function SignUp() {
                   required: true,
                 })}
               />
-              <Button type="submit" className="w-full">
+              <Button type="submit" className="w-full"
+              >
                 Create Account
               </Button>
             </div>

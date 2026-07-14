@@ -31,7 +31,7 @@ function Header() {
     },
     {
       name: "Add Post",
-      slug: "/add-post",
+      slug: "/add-posts",
       active: authStatus,
     },
     
@@ -39,17 +39,19 @@ function Header() {
   return (
     <header className="py-3 shadow bg-gray-500">
       <Container>
-        <nav className="flex space-x-4">
+        <nav className="flex">
           <div className="mr-4">
             <Link to="/">
-              <Logo width="100" height="50" />
+              <Logo width="70px" />
             </Link>
           </div>
           <ul className='flex ml-auto'>
             {navItems.map((item)=> 
               item.active ? (
-                <li key={item.slug} className="mr-4">
-                  <button onclick={() => navigate(item, slug)} className="inline-block px-6 py-2 duration-200 hover:bg-blue-100 rounded-full">
+                <li key={item.name}>
+                  <button onClick={() => navigate(item.slug)}
+                    className="inline-block px-6 py-2 duration-200 hover:bg-blue-100 rounded-full
+                  ">
                     {item.name}
                   </button>
               </li>

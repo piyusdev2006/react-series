@@ -13,7 +13,7 @@ function Login() {
     const [error, setError] = useState("")
     const { register, handleSubmit } = useForm()
 
-    const login = async (data) => {
+    const login = async(data) => {
         setError("")
         try {
             const session = await authService.login(data)
@@ -25,7 +25,7 @@ function Login() {
                 }
             }
         } catch (error) {
-            setError('Login failed. Please try again.')
+            setError('Login failed. Please try again.', error.message)
         }
     }
 
@@ -59,7 +59,7 @@ function Login() {
                 placeholder="Enter your email"
                 type="email"
                 {...register("email", {
-                  required: "Email is required",
+                  required: true,
                   validate: {
                     matchPattern: (value) =>
                       /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
@@ -73,18 +73,16 @@ function Login() {
                 placeholder="Enter your password"
                 type="password"
                 {...register("password", {
-                  required: "Password is required",
+                  required: true,
                   minLength: {
                     value: 6,
                     message: "Password must be at least 6 characters",
                   },
                 })}
-                />
-
-                        <Button
-                            type="submit"
-                            className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors duration-300"
-                        >Sign In/Login</Button>  
+              />
+              <Button type="submit" className="w-full">
+                Sign In/Login
+              </Button>
             </div>
           </form>
         </div>
