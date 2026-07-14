@@ -127,19 +127,13 @@ export class DBService {
 
   getFileView(fileId) {
     return String(
-      this.bucket.getFileView({
-        bucketId: config.appwriteBucketId,
-        fileId,
-      }),
+      this.bucket.getFileView(config.appwriteBucketId, fileId),
     );
   }
 
   getFilePreview(fileId) {
     return String(
-      this.bucket.getFilePreview({
-        bucketId: config.appwriteBucketId,
-        fileId,
-      }),
+      this.bucket.getFilePreview(config.appwriteBucketId, fileId),
     );
   }
 }

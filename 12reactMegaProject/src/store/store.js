@@ -6,6 +6,13 @@ const store = configureStore({
     auth: authSlice,
     //TODO: add more slices here for posts
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ["auth/login"],
+        ignoredPaths: ["auth.userData"],
+      },
+    }),
 });
 
 export default store;

@@ -2,14 +2,17 @@ import React from 'react'
 import { useDispatch } from 'react-redux';
 import authServices from '../../appwriteServices/auth.js';
 import { logout } from '../../store/authSlice.js';
+import { useNavigate } from 'react-router';
 
 function LogoutBtn() {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const logoutHandler = () => { 
     authServices.logout()
       .then(() => { 
         dispatch(logout())
+        navigate('/login')
       })
   }
   return (

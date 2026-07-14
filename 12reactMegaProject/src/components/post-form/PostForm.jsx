@@ -126,23 +126,13 @@ export default function PostForm({ post }) {
             <img
               src={
                 imagePreview ||
-                String(dbService.getFileView(post.featuredImage))
+                dbService.getFileView(post.featuredImage)
               }
               alt={post?.title || "preview"}
               className="rounded-lg"
             />
           </div>
         )}
-
-        {/* {post && (
-            <div className="w-full mb-4">
-              <img
-                src={dbService.getFilePreview(post.featuredImage)}
-                alt={post.title}
-                className="rounded-lg"
-              />
-            </div>
-          )} */}
 
         <Select
           options={["active", "inactive"]}
